@@ -42,4 +42,20 @@
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  // Reveal sections as they snap into view
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    var revealTargets = document.querySelectorAll('.section, .strategy, .footer');
+    revealTargets.forEach(function (el) { el.classList.add('reveal-pending'); });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove('reveal-pending');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealTargets.forEach(function (el) { io.observe(el); });
+  }
 })();
