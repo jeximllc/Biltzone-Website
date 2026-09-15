@@ -254,18 +254,13 @@ p { margin: 0; }
 .section-dark { background: var(--navy); }
 
 /* About */
-.about-section { position: relative; overflow: hidden; }
-.about-bg {
+.about-section { position: relative; overflow: hidden; background: var(--navy-deep); }
+.about-bg { position: absolute; inset: 0; }
+.about-bg img { width: 100%; height: 100%; object-fit: cover; }
+.about-overlay {
   position: absolute;
   inset: 0;
-  opacity: 0.13;
-  mix-blend-mode: multiply;
-}
-.about-bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(1) contrast(1.05);
+  background: linear-gradient(180deg, rgba(6,13,24,0.55) 0%, rgba(6,13,24,0.8) 55%, rgba(6,13,24,0.94) 100%);
 }
 .about-section .container { position: relative; }
 
@@ -279,7 +274,7 @@ p { margin: 0; }
 .about-heading {
   font-size: clamp(28px, 3.4vw, 40px);
   line-height: 1.25;
-  color: var(--ink);
+  color: var(--white);
 }
 .about-heading .line { display: block; }
 .about-right {
@@ -289,26 +284,26 @@ p { margin: 0; }
 .about-copy p {
   font-size: 15.5px;
   line-height: 1.75;
-  color: var(--body-dark);
+  color: var(--body-on-navy-2);
 }
-.about-copy-block { padding-top: 20px; border-top: 1px solid var(--line-light); }
+.about-copy-block { padding-top: 20px; border-top: 1px solid var(--line-dark); }
 .about-copy-block:first-child { padding-top: 0; border-top: none; }
 
 .feature-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
-  border-top: 1px solid var(--line-light);
+  border-top: 1px solid var(--line-dark);
   padding-top: 56px;
 }
 .feature-num {
   font-size: 13px;
   font-weight: 700;
-  color: var(--blue);
+  color: var(--cyan);
   margin-bottom: 18px;
 }
-.feature-card h3 { font-size: 19px; margin-bottom: 12px; color: var(--ink); }
-.feature-card p { font-size: 14.5px; line-height: 1.65; color: var(--body-dark); }
+.feature-card h3 { font-size: 19px; margin-bottom: 12px; color: var(--white); }
+.feature-card p { font-size: 14.5px; line-height: 1.65; color: var(--body-on-navy-1); }
 
 /* Process */
 .process-row {
@@ -461,12 +456,24 @@ p { margin: 0; }
   color: var(--white);
   overflow: hidden;
   padding-top: 130px;
+  background: var(--navy-deep);
 }
-.footer-bg { position: absolute; inset: 0; }
-.footer-bg img { width: 100%; height: 100%; object-fit: cover; }
+.footer-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 418px;
+}
+.footer-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
 .footer-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(6,13,24,0.32) 0%, rgba(6,13,24,0.55) 28%, var(--navy-deep) 50%, var(--navy-deep) 100%);
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 418px;
+  background: rgba(6,13,24,0.6);
 }
 .footer-content { position: relative; padding-bottom: 40px; }
 .footer-heading {
@@ -503,6 +510,8 @@ p { margin: 0; }
   line-height: 2;
 }
 .footer-info-row span:first-child { color: var(--muted); }
+.footer-info-row a { color: inherit; transition: color .2s ease; }
+.footer-info-row a:hover { color: var(--cyan); }
 .footer-bottom {
   display: flex;
   justify-content: space-between;
