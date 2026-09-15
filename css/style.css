@@ -22,24 +22,7 @@
 }
 
 * { box-sizing: border-box; }
-html {
-  scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
-}
-.hero, .section, .strategy, .footer {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  scroll-margin-top: 72px;
-}
-.section, .strategy, .footer {
-  transition: opacity .7s ease, transform .7s ease;
-}
-.reveal-pending { opacity: 0; transform: translateY(28px); }
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; scroll-snap-type: none; }
-  .section, .strategy, .footer { transition: none; }
-  .reveal-pending { opacity: 1; transform: none; }
-}
+html { scroll-behavior: smooth; }
 body {
   margin: 0;
   font-family: var(--ff-body);
